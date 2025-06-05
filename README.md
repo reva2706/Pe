@@ -1,7 +1,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Beranda - Nareva Ranov Media Sosial</title>
+  <title>Registrasi - Nareva Ranov Media Sosial</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     * {
