@@ -1,7 +1,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Registrasi - Nareva Ranov Media Sosial</title>
+  <title>Register - Nareva ranov Media Sosial</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     * {
@@ -9,130 +9,87 @@
       font-family: 'Inter', sans-serif;
     }
     body {
-      background-color: #f2f5f9;
+      background: linear-gradient(to right, #74ebd5, #ACB6E5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
       margin: 0;
-      padding: 0;
     }
-    header {
-      background-color: #007bff;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-    nav {
-      margin-top: 10px;
-    }
-    nav a {
-      color: white;
-      margin: 0 10px;
-      text-decoration: none;
-      font-weight: 500;
-    }
-    main {
-      max-width: 700px;
-      margin: 40px auto;
-      padding: 20px;
-    }
-    .card {
-      background-color: gold;
-      padding: 25px;
+    .container {
+      background-color: white;
+      padding: 30px 40px;
       border-radius: 15px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-      margin-bottom: 30px;
-    }
-    .card h2 {
-      margin-bottom: 20px;
-    }
-    textarea {
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      max-width: 400px;
       width: 100%;
-      padding: 12px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      resize: none;
-      font-size: 14px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
       margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
     }
     button {
+      width: 100%;
+      padding: 12px;
       background-color: #007bff;
-      color: white;
       border: none;
-      padding: 12px 20px;
       border-radius: 8px;
+      color: white;
+      font-size: 16px;
       cursor: pointer;
-      font-size: 15px;
+      transition: 0.3s;
     }
     button:hover {
       background-color: #0056b3;
     }
-    .post {
-      background-color: #f8f9fa;
-      padding: 15px;
-      border-radius: 10px;
-      margin-top: 15px;
-    }
-    .post a {
-      font-weight: bold;
-      color: #007bff;
-      text-decoration: none;
-    }
-    .post img {
-      margin-top: 10px;
-      max-width: 100%;
-      border-radius: 5px;
-    }
-    small {
-      color: #777;
-    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Selamat Datang di NRV Media Sosial <span id="userDisplay"></span></h1>
-    <nav>
-      <a href="#">Beranda</a>
-      <a href="#">Profil</a>
-      <a href="#">Pesan</a>
-      <a href="#">Logout</a>
-    </nav>
-  </header>
+  <div class="container">
+    <h2>Registrasi</h2>
+    <form onsubmit="return registerUser()">
+      <label for="username">Username:</label>
+      <input type="text" id="username" required>
 
-  <main>
-    <div class="card">
-      <h2>Buat Postingan</h2>
-      <form id="postForm">
-        <textarea id="postContent" placeholder="Tulis sesuatu..."></textarea>
-        <button type="submit">Posting</button>
-      </form>
-    </div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" required>
 
-    <!-- Contoh Postingan -->
-    <div class="post">
-      <a href="#">Harvey_Van_Leeuwen</a><br>
-      <small>2025-05-25 09:38:12</small>
-      <p>Jangan lupa mampir dan ikuti tiktok saya @busensia</p>
-      <img src="bus.jpg" alt="bus">
-    </div>
-  </main>
+      <label for="confirm-password">Konfirmasi Password:</label>
+      <input type="password" id="confirm-password" required>
+
+      <button type="submit">Register</button>
+    </form>
+  </div>
 
   <script>
-    const username = localStorage.getItem("username");
-    if (username) {
-      document.getElementById("userDisplay").textContent = '(${username})';
-    } else {
-      window.location.href = "register.html"; // Kembali ke register kalau belum login
-    }
+    function registerUser() {
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirm-password").value;
 
-    document.getElementById("postForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      const content = document.getElementById("postContent").value.trim();
-      if (!content) {
-        alert("Isi postingan tidak boleh kosong.");
-        return;
+      if (password !== confirmPassword) {
+        alert("Password dan konfirmasi password tidak cocok!");
+        return false;
       }
 
-      alert("Postingan Anda:\n" + content);
-      document.getElementById("postContent").value = "";
-    });
+      localStorage.setItem("username", username);
+      window.location.href = "repa.html";
+      return false;
+    }
   </script>
 </body>
 </html>
