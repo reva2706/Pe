@@ -87,7 +87,7 @@
       }
 
       localStorage.setItem("username", username);
-      window.location.href = "repa.html";
+      window.location.href = "index.html";
       return false;
     }
   </script>
